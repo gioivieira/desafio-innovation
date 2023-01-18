@@ -1,0 +1,35 @@
+GET http://localhost:3306/products
+Content-Type: application/json
+
+###
+GET http://localhost:3306/products/1674068002541
+Content-Type: application/json
+
+###
+POST http://localhost:3306/products
+Content-Type: application/json
+
+{
+    "name": "daasadsd",
+    "category": "sdasd",
+    "quantity": "3"
+}
+
+###
+PATCH http://localhost:3306/products/1674068002541
+Content-Type: application/json
+
+{
+    "name": "Bo56la",
+    "category": "Hksjdlk"
+}
+
+###
+PUT http://localhost:3306/products/1674073716706
+Content-Type: application/json
+
+###
+DELETE http://localhost:3306/products/1674073716706
+Content-Type: application/json
+
+

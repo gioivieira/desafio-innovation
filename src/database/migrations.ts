@@ -6,8 +6,9 @@ const createTable= async ()=>{
     await BaseDatabase.connection.raw(`
         CREATE TABLE IF NOT EXISTS Products (
             id VARCHAR(100) PRIMARY KEY,
-            name VARCHAR(255) NOT NULL,
-            category ENUM("ACTIVE", "INACTIVE") NOT NULL,
+            name VARCHAR(255) NOT NULL UNIQUE,
+            category VARCHAR(100) NOT NULL,
+            status ENUM("ACTIVE", "INACTIVE") NOT NULL,
             quantity INT NOT NULL,
             created_at DATE NOT NULL,
             updated_at DATE,
