@@ -10,8 +10,8 @@ const createTable= async ()=>{
             category ENUM("ACTIVE", "INACTIVE") NOT NULL,
             quantity INT NOT NULL,
             created_at DATE NOT NULL,
-            updated_at DATE NOT NULL,
-            deleted_at DATE NOT NULL
+            updated_at DATE,
+            deleted_at DATE
         );
     `)
 }
