@@ -1,5 +1,6 @@
 import knex from 'knex'
 import dotenv from 'dotenv'
+import { Product } from './Product'
 
 dotenv.config()
 
@@ -18,9 +19,26 @@ abstract class BaseDatabase {
 
     abstract TABLE_NAME: string
 
-    protected async getAll(){
+    protected async getItems(){
         const result = await BaseDatabase.connection(this.TABLE_NAME).select("*")
         return result
+    }
+
+    protected async getItem(id: string){
+        const result = await BaseDatabase.connection(this.TABLE_NAME).select("*").whereLike("id", id)
+        return result
+    }
+
+    protected async updateItem(column: string, newInfo: any, id: string){
+        await BaseDatabase.connection(this.TABLE_NAME).update(column, newInfo).whereLike("id", id)
+    }
+
+    protected async createItem(item: Product){
+        await BaseDatabase.connection(this.TABLE_NAME).insert(item)
+    }
+
+    protected async deleteItem(id: string){
+        await BaseDatabase.connection(this.TABLE_NAME).whereILike("id", id).del()
     }
 }
 
