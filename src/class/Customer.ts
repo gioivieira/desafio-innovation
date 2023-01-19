@@ -32,6 +32,10 @@ export class Customer {
         return this.birth_date
     }
 
+    public getStatus() {
+        return this.status
+    }
+
     public getCreatedAt() {
         return this.created_at
     }

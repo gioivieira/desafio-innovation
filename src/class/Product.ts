@@ -3,6 +3,7 @@ export class Product {
         private id: string,
         private name: string,
         private category: string,
+        private price: number,
         private status: string,
         private quantity: number,
         private created_at: Date,
@@ -21,6 +22,10 @@ export class Product {
 
     public getCategory() {
         return this.category
+    }
+
+    public getPrice() {
+        return this.price
     }
 
     public getStatus() {

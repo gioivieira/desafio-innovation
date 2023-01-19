@@ -4,7 +4,7 @@ GET http://localhost:3306/products
 Content-Type: application/json
 
 ###
-GET http://localhost:3306/products/1674068002541
+GET http://localhost:3306/products/1674160302277
 Content-Type: application/json
 
 ###
@@ -14,20 +14,21 @@ Content-Type: application/json
 {
     "name": "Bola de futebol",
     "category": "Esportivo",
+    "price": 50.50,
     "quantity": "50"
 }
 
 ###
-PATCH http://localhost:3306/products/1674135569236
+PATCH http://localhost:3306/products/1674160302277
 Content-Type: application/json
 
 {
-    "name": "Lápis de olho",
-    "category": "Livraria"
+    "name": "Roupa",
+    "category": "Vestuário"
 }
 
 ###
-PUT http://localhost:3306/products/1674073716706
+PUT http://localhost:3306/products/1674160302277
 Content-Type: application/json
 
 //Customers endpoints
@@ -37,7 +38,7 @@ GET http://localhost:3306/customers
 Content-Type: application/json
 
 ###
-GET http://localhost:3306/customers/1674137321545
+GET http://localhost:3306/customers/1674159948375
 Content-Type: application/json
 
 ###
@@ -52,7 +53,7 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://localhost:3306/customers/1674137321545
+PATCH http://localhost:3306/customers/1674159948375
 Content-Type: application/json
 
 {
@@ -61,7 +62,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3306/customers/1674135437041
+PUT http://localhost:3306/customers/1674159948375
 Content-Type: application/json
 
 //Orders endpoints
@@ -71,7 +72,7 @@ GET http://localhost:3306/orders
 Content-Type: application/json
 
 ###
-GET http://localhost:3306/orders/1674149189115
+GET http://localhost:3306/orders/1674159980553
 Content-Type: application/json
 
 ###
@@ -79,12 +80,11 @@ POST http://localhost:3306/orders
 Content-Type: application/json
 
 {
-    "productId": "1674152289660",
-    "customerId": "1674152274623",
-    "quantity": "5"
-    
+    "productId": "1674159183932",
+    "customerId": "1674159948375",
+    "quantity": "20"    
 }
 
 ###
-DELETE http://localhost:3306/orders/1674152326314
+DELETE http://localhost:3306/orders/1674160547781
 Content-Type: application/json

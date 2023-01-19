@@ -9,6 +9,7 @@ const createOrder = async (req: Request, res: Response)=>{
     const ordersDB = new OrdersDatabase()
     const productsDB = new ProductsDatabase()
     const customersDB = new CustomersDatabase()
+    let totalValue;
     const {productId, customerId, quantity} = req.body
 
     try{
@@ -24,6 +25,9 @@ const createOrder = async (req: Request, res: Response)=>{
         } if(!quantity){
             errorCode = 422
             throw new Error("Quantity required.")
+        } if(Number(quantity) <= 0){
+            errorCode = 422
+            throw new Error("The quantity must be greater than 0.")
         }
 
         const allProducts = await productsDB.getProducts()
@@ -44,11 +48,12 @@ const createOrder = async (req: Request, res: Response)=>{
 
         for(let product of allProducts){
             if(product.id.toString() === productId.toString()){
-                if(product.quantity < quantity){
+                if(product.quantity < Number(quantity)){
                     throw new Error("The quantity that the customer wants to order is larger than the available quantity of the product.")                    
-                } if(product.quantity >= quantity){
-                    await productsDB.updateProduct("quantity", product.quantity - quantity, productId)
+                } if(product.quantity >= Number(quantity)){
+                    await productsDB.updateProduct("quantity", product.quantity - Number(quantity), productId)
                     await productsDB.updateProduct("updated_at", new Date(), productId)
+                    totalValue = Number(quantity) * product.price
                 }             
             }
         }
@@ -57,6 +62,7 @@ const createOrder = async (req: Request, res: Response)=>{
             Date.now().toString(),
             new Date(),
             Number(quantity),
+            Number(totalValue),
             productId,
             customerId
         )

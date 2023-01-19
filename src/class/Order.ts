@@ -3,6 +3,7 @@ export class Order {
         private id: string,
         private created_at: Date,
         private quantity: number,
+        private total_value: number,
         private fk_products: string,
         private fk_customers: string
     ){
@@ -18,6 +19,10 @@ export class Order {
 
     public getQuantity() {
         return this.quantity
+    }
+
+    public getTotalValue() {
+        return this.total_value
     }
 
     public getProductId() {

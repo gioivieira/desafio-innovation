@@ -4,7 +4,7 @@ import CustomersDatabase from "../../class/CustomersDatabase"
 const inactivateCustomer = async (req: Request, res: Response)=>{
     let errorCode = 400
     const customersDB = new CustomersDatabase()
-    const customerId = req.params.CustomerId
+    const customerId = req.params.customerId
 
     try{
         if(!customerId){
