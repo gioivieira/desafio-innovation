@@ -13,6 +13,25 @@ const createTable= async ()=>{
             created_at DATE NOT NULL,
             updated_at DATE,
             deleted_at DATE
+        )
+        UNION
+        CREATE TABLE IF NOT EXISTS Customers (
+            id VARCHAR(100) PRIMARY KEY,
+            full_name VARCHAR(255) NOT NULL,
+            cpf VARCHAR(20) NOT NULL UNIQUE,
+            email VARCHAR(80) NOT NULL,
+            birth_date DATE NOT NULL,
+            created_at DATE NOT NULL,
+            updated_at DATE
+        )
+        UNION
+        CREATE TABLE IF NOT EXISTS Orders (
+            id VARCHAR(100) PRIMARY KEY,
+            created_at DATE NOT NULL,
+            fk_products VARCHAR(100),
+            fk_customers VARCHAR(100),
+            FOREIGN KEY (fk_products) REFERENCES Products(id),
+            FOREIGN KEY (fk_customers) REFERENCES Customers(id)                
         );
     `)
 }
@@ -20,6 +39,6 @@ const createTable= async ()=>{
 const finish = async () => await BaseDatabase.connection.destroy()
 
 createTable()
-.then(() => console.log("Entity created."))
+.then(() => console.log("Created entities."))
 .catch(()=> console.log(printError))
 .finally(finish)

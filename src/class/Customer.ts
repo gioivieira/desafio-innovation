@@ -8,13 +8,6 @@ export class Customer {
         private created_at: Date,
         private updated_at: Date
     ){
-        this.id = id
-        this.full_name = full_name
-        this.cpf= cpf
-        this.email = email
-        this.birth_date = birth_date
-        this.created_at = created_at
-        this.updated_at = updated_at
     }
 
     public getId() {

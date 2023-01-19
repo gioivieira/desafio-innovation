@@ -9,14 +9,6 @@ export class Product {
         private updated_at: Date,
         private deleted_at: Date
     ){
-        this.id = id
-        this.name = name
-        this.category = category
-        this.status = status
-        this.quantity = quantity
-        this.created_at = created_at
-        this.updated_at = updated_at
-        this.deleted_at = deleted_at
     }
 
     public getId() {
