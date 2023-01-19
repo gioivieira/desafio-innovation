@@ -13,8 +13,10 @@ const createTable= async ()=>{
             created_at DATE NOT NULL,
             updated_at DATE,
             deleted_at DATE
-        )
-        UNION
+        );
+    `)
+
+    await BaseDatabase.connection.raw(`
         CREATE TABLE IF NOT EXISTS Customers (
             id VARCHAR(100) PRIMARY KEY,
             full_name VARCHAR(255) NOT NULL,
@@ -23,8 +25,10 @@ const createTable= async ()=>{
             birth_date DATE NOT NULL,
             created_at DATE NOT NULL,
             updated_at DATE
-        )
-        UNION
+        );
+    `)
+
+    await BaseDatabase.connection.raw(`
         CREATE TABLE IF NOT EXISTS Orders (
             id VARCHAR(100) PRIMARY KEY,
             created_at DATE NOT NULL,
