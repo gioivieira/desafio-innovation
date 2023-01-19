@@ -1,5 +1,5 @@
-import BaseDatabase from "./BaseDatabase";
-import { Product } from "./Product";
+import BaseDatabase from "./BaseDatabase"
+import { Product } from "./Product"
 
 class ProductsDatabase extends BaseDatabase{
     TABLE_NAME: string = "Products"

@@ -1,6 +1,5 @@
 import knex from 'knex'
 import dotenv from 'dotenv'
-import { Product } from './Product'
 
 dotenv.config()
 
@@ -33,7 +32,7 @@ abstract class BaseDatabase {
         await BaseDatabase.connection(this.TABLE_NAME).update(column, newInfo).whereLike("id", id)
     }
 
-    protected async createItem(item: Product){
+    protected async createItem(item: any){
         await BaseDatabase.connection(this.TABLE_NAME).insert(item)
     }
 
