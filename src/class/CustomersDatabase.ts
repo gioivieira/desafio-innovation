@@ -1,8 +1,8 @@
 import BaseDatabase from "./BaseDatabase"
 import { Customer } from "./Customer"
 
-class CustumersDatabase extends BaseDatabase{
-    TABLE_NAME: string = "Costumers"
+class CustomersDatabase extends BaseDatabase{
+    TABLE_NAME: string = "Customers"
 
     public async getCustomers(){
         const result = await super.getItems()
@@ -14,17 +14,13 @@ class CustumersDatabase extends BaseDatabase{
         return result
     }
 
-    public async updateCostumer(column: string, newInfo: any, id: string){
+    public async updateCustomer(column: string, newInfo: any, id: string){
         await super.updateItem(column, newInfo, id)
     }
 
     public async createCustomer(item: Customer){
         await super.createItem(item)
     }
-
-    public async deleteCustomer(id: string){
-        await super.deleteItem(id)
-    }
 }
 
-export default CustumersDatabase
+export default CustomersDatabase

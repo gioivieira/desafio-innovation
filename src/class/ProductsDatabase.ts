@@ -1,4 +1,5 @@
 import BaseDatabase from "./BaseDatabase"
+import { Product } from "./Product"
 
 class ProductsDatabase extends BaseDatabase{
     TABLE_NAME: string = "Products"
@@ -17,12 +18,8 @@ class ProductsDatabase extends BaseDatabase{
         await super.updateItem(column, newInfo, id)
     }
 
-    public async createProduct(item: any){
+    public async createProduct(item: Product){
         await super.createItem(item)
-    }
-
-    public async deleteProduct(id: string){
-        await super.deleteItem(id)
     }
 }
 

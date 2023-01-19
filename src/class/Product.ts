@@ -6,8 +6,8 @@ export class Product {
         private status: string,
         private quantity: number,
         private created_at: Date,
-        private updated_at: Date,
-        private deleted_at: Date
+        private updated_at: any = null,
+        private deleted_at: any = null
     ){
     }
 

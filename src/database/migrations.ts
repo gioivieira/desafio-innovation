@@ -23,8 +23,10 @@ const createTable= async ()=>{
             cpf VARCHAR(20) NOT NULL UNIQUE,
             email VARCHAR(80) NOT NULL,
             birth_date DATE NOT NULL,
+            status ENUM("ACTIVE", "INACTIVE") NOT NULL,
             created_at DATE NOT NULL,
-            updated_at DATE
+            updated_at DATE,
+            deleted_at DATE
         );
     `)
 
@@ -32,6 +34,7 @@ const createTable= async ()=>{
         CREATE TABLE IF NOT EXISTS Orders (
             id VARCHAR(100) PRIMARY KEY,
             created_at DATE NOT NULL,
+            quantity INT NOT NULL,
             fk_products VARCHAR(100),
             fk_customers VARCHAR(100),
             FOREIGN KEY (fk_products) REFERENCES Products(id),

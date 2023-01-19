@@ -5,8 +5,10 @@ export class Customer {
         private cpf: string,
         private email: string,
         private birth_date: Date,
+        private status: string,
         private created_at: Date,
-        private updated_at: Date
+        private updated_at: any = null,
+        private deleted_at: any = null
     ){
     }
 
@@ -36,5 +38,9 @@ export class Customer {
 
     public getUpdatedAt() {
         return this.updated_at
+    }
+
+    public getDeletedAt() {
+        return this.deleted_at
     }
 }

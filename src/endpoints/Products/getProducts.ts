@@ -1,5 +1,5 @@
 import { Request, Response } from "express-serve-static-core"
-import ProductsDatabase from "../class/ProductsDatabase"
+import ProductsDatabase from "../../class/ProductsDatabase"
 
 const getProducts = async(req: Request, res: Response)=>{
     let errorCode = 400

@@ -1,7 +1,7 @@
 import { Request, Response } from "express-serve-static-core"
-import ProductsDatabase from "../class/ProductsDatabase"
+import ProductsDatabase from "../../class/ProductsDatabase"
 
-const deleteProduct = async (req: Request, res: Response)=>{
+const inactivateProduct = async (req: Request, res: Response)=>{
     let errorCode = 400
     const productsDB = new ProductsDatabase()
     const productId = req.params.productId
@@ -10,8 +10,8 @@ const deleteProduct = async (req: Request, res: Response)=>{
         if(!productId){
             errorCode = 422
             throw new Error("Product id required.")            
-        }
-
+        } 
+        
         const allProducts = await productsDB.getProducts()
         const productExisting = allProducts.filter(product => product.id.toString() === productId.toString())
 
@@ -20,12 +20,15 @@ const deleteProduct = async (req: Request, res: Response)=>{
             throw new Error("Product not found.")            
         }
 
-        await productsDB.deleteProduct(productId)
-        
-        res.status(200).end()
+        await productsDB.updateProduct("status", "INACTIVE", productId)
+        await productsDB.updateProduct("updated_at", new Date(), productId)
+        await productsDB.updateProduct("deleted_at", new Date(), productId)
+        await productsDB.updateProduct("quantity", "0", productId)
+
+        res.status(200).end()                
     }catch(err: any){
         res.status(errorCode).send(err.message)
     }
 }
 
-export default deleteProduct
+export default inactivateProduct

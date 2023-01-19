@@ -13,12 +13,12 @@ class OrdersDatabase extends BaseDatabase{
         return result
     }
 
-    public async updateOrder(column: string, newInfo: any, id: string){
-        await super.updateItem(column, newInfo, id)
-    }
-
     public async createOrder(item: Order){
         await super.createItem(item)
+    }
+
+    public async deleteOrder(id: string){
+        await super.deleteItem(id)
     }
 }
 

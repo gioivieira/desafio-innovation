@@ -2,8 +2,9 @@ export class Order {
     constructor(
         private id: string,
         private created_at: Date,
-        private product_id: string,
-        private customer_id: string
+        private quantity: number,
+        private fk_products: string,
+        private fk_customers: string
     ){
     }
 
@@ -15,11 +16,15 @@ export class Order {
         return this.created_at
     }
 
+    public getQuantity() {
+        return this.quantity
+    }
+
     public getProductId() {
-        return this.product_id
+        return this.fk_products
     }
 
     public getCustomerId() {
-        return this.customer_id
+        return this.fk_customers
     }
 }

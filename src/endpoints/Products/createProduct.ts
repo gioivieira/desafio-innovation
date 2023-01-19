@@ -1,5 +1,6 @@
 import { Request, Response } from "express-serve-static-core"
-import ProductsDatabase from "../class/ProductsDatabase"
+import { Product } from "../../class/Product"
+import ProductsDatabase from "../../class/ProductsDatabase"
 
 const createProduct = async (req: Request, res: Response)=>{
     let errorCode = 400
@@ -29,14 +30,14 @@ const createProduct = async (req: Request, res: Response)=>{
             throw new Error("This product already exists.")            
         }
 
-        const newProduct = {
-            id: Date.now().toString(),
+        const newProduct = new Product(
+            Date.now().toString(),
             name,
             category,
-            status: 'ACTIVE',
-            quantity: Number(quantity),
-            created_at: new Date()
-        }
+            'ACTIVE',
+            Number(quantity),
+            new Date()
+        )
 
         await productsDB.createProduct(newProduct)
 
