@@ -88,3 +88,13 @@ Content-Type: application/json
 ###
 DELETE http://localhost:3306/orders/1674160547781
 Content-Type: application/json
+
+//API IBGE
+
+###
+GET http://localhost:3306/counties
+Content-Type: application/json
+
+###
+POST http://localhost:3306/counties
+Content-Type: application/json

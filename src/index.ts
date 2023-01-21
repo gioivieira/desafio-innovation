@@ -13,6 +13,8 @@ import getProduct from "./endpoints/Products/getProduct"
 import getProducts from "./endpoints/Products/getProducts"
 import inactivateProduct from "./endpoints/Products/inactivateProduct"
 import updateProduct from "./endpoints/Products/updateProduct"
+import getCounties from "./endpoints/Counties/getCounties"
+import addCounties from "./endpoints/Counties/addCounties"
 
 //Products endpoints
 
@@ -47,3 +49,9 @@ app.get("/orders/:orderId", getOrder)
 app.post("/orders", createOrder)
 
 app.delete("/orders/:orderId", deleteOrder)
+
+//API IBGE
+
+app.get("/counties", getCounties)
+
+app.post("/counties", addCounties)

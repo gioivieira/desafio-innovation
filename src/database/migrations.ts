@@ -43,6 +43,13 @@ const createTable= async ()=>{
             FOREIGN KEY (fk_customers) REFERENCES Customers(id)                
         );
     `)
+
+    await BaseDatabase.connection.raw(`
+        CREATE TABLE IF NOT EXISTS Counties (
+            id VARCHAR(100) PRIMARY KEY,
+            countie_name VARCHAR(100) NOT NULL             
+        );
+    `)
 }
 
 const finish = async () => await BaseDatabase.connection.destroy()
