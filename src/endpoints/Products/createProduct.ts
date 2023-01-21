@@ -1,6 +1,7 @@
 import { Request, Response } from "express-serve-static-core"
 import { Product } from "../../class/Product"
 import ProductsDatabase from "../../class/ProductsDatabase"
+import { validateCategory, validateProductName } from "../../validations/validations"
 
 const createProduct = async (req: Request, res: Response)=>{
     let errorCode = 400
@@ -14,16 +15,25 @@ const createProduct = async (req: Request, res: Response)=>{
         } if(!name){
             errorCode = 422
             throw new Error("Product name required.")            
+        } if(!validateProductName(name)){
+            errorCode = 422
+            throw new Error("Product name must be at least 4 characters long.") 
         } if(!category){
             errorCode = 422
             throw new Error("Product category required.")
+        } if(!validateCategory(category)){
+            errorCode = 422
+            throw new Error("Product category must be at least 4 characters long.") 
         } if(!quantity){
             errorCode = 422
             throw new Error("Product quantity required.")
+        } if(typeof(quantity) !== "number"){
+            errorCode = 422
+            throw new Error("The quantity has to be a number.")
         } if(!price){
             errorCode = 422
             throw new Error("Product price required.")
-        } if(isNaN(price)){
+        } if(typeof(price) !== "number"){
             errorCode = 422
             throw new Error("The price has to be a number.")
         } if(Number(quantity) <= 0){

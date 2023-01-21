@@ -4,7 +4,7 @@ GET http://localhost:3306/products
 Content-Type: application/json
 
 ###
-GET http://localhost:3306/products/1674160302277
+GET http://localhost:3306/products/1674311954724
 Content-Type: application/json
 
 ###
@@ -12,23 +12,25 @@ POST http://localhost:3306/products
 Content-Type: application/json
 
 {
-    "name": "Bola de futebol",
+    "name": "Bola futesdasdbol",
     "category": "Esportivo",
     "price": 50.50,
-    "quantity": "50"
+    "quantity": 50
 }
 
 ###
-PATCH http://localhost:3306/products/1674160302277
+PATCH http://localhost:3306/products/1674311954724
 Content-Type: application/json
 
 {
     "name": "Roupa",
-    "category": "Vestuário"
+    "category": "Vestuário",
+    "quantity": 50,
+    "price": 50
 }
 
 ###
-PUT http://localhost:3306/products/1674160302277
+PUT http://localhost:3306/products/1674311954724
 Content-Type: application/json
 
 //Customers endpoints
@@ -38,7 +40,7 @@ GET http://localhost:3306/customers
 Content-Type: application/json
 
 ###
-GET http://localhost:3306/customers/1674159948375
+GET http://localhost:3306/customers/1674312215724
 Content-Type: application/json
 
 ###
@@ -47,22 +49,22 @@ Content-Type: application/json
 
 {
     "fullName": "Giovana Inez Vieira",
-    "cpf": "13843718626",
+    "cpf": "138.437.136-26",
     "email": "gioivieira@gmail.com",
     "birthDate": "1999-04-01"
 }
 
 ###
-PATCH http://localhost:3306/customers/1674159948375
+PATCH http://localhost:3306/customers/1674312215724
 Content-Type: application/json
 
 {
-    "fullName": "Giovana",
-    "email": "Hksjdlk"
+    "fullName": "Giova",
+    "email": "gioivieira@gmail.com"
 }
 
 ###
-PUT http://localhost:3306/customers/1674159948375
+PUT http://localhost:3306/customers/1674312215724
 Content-Type: application/json
 
 //Orders endpoints
@@ -72,7 +74,7 @@ GET http://localhost:3306/orders
 Content-Type: application/json
 
 ###
-GET http://localhost:3306/orders/1674159980553
+GET http://localhost:3306/orders/1674312696764
 Content-Type: application/json
 
 ###
@@ -80,13 +82,13 @@ POST http://localhost:3306/orders
 Content-Type: application/json
 
 {
-    "productId": "1674159183932",
-    "customerId": "1674159948375",
-    "quantity": "20"    
+    "productId": "1674312080796",
+    "customerId": "1674312215724",
+    "quantity": 20
 }
 
 ###
-DELETE http://localhost:3306/orders/1674160547781
+DELETE http://localhost:3306/orders/1674312696764
 Content-Type: application/json
 
 //API IBGE

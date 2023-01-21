@@ -1,5 +1,6 @@
 import { Request, Response } from "express-serve-static-core"
 import CustomersDatabase from "../../class/CustomersDatabase"
+import { validateCustomerName, validateEmail, validateCustomerNameCaracteres } from "../../validations/validations"
 
 const updateCustomer = async (req: Request, res: Response)=>{
     let errorCode = 400
@@ -26,8 +27,19 @@ const updateCustomer = async (req: Request, res: Response)=>{
         }
 
         if(fullName){
+            if(!validateCustomerNameCaracteres(fullName)){
+                errorCode = 422
+                throw new Error("Type your full name using at least 5 characters and no special characters.") 
+            } if(!validateCustomerName(fullName)){
+                errorCode = 422
+                throw new Error("Invalid full name.")
+            }
             await customersDB.updateCustomer("full_name", fullName, customerId)
         } if(email){
+            if(!validateEmail(email)){
+                errorCode = 422
+                throw new Error("Invalid e-mail.")
+            }
             await customersDB.updateCustomer("email", email, customerId) 
         }
 

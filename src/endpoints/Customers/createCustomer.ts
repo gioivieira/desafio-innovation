@@ -1,6 +1,7 @@
 import { Request, Response } from "express-serve-static-core"
 import { Customer } from "../../class/Customer"
 import CustomersDatabase from "../../class/CustomersDatabase"
+import { validateCustomerNameCaracteres, validateCustomerName, validateCpf, isCpfValid, validateEmail, validateBirthDate } from "../../validations/validations"
 
 const createCustomer = async (req: Request, res: Response)=>{
     let errorCode = 400
@@ -14,15 +15,33 @@ const createCustomer = async (req: Request, res: Response)=>{
         } if(!fullName){
             errorCode = 422
             throw new Error("Full name required.")            
+        } if(!validateCustomerNameCaracteres(fullName)){
+            errorCode = 422
+            throw new Error("Type your full name using at least 5 characters and no special characters.") 
+        } if(!validateCustomerName(fullName)){
+            errorCode = 422
+            throw new Error("Invalid full name.")
         } if(!cpf){
             errorCode = 422
             throw new Error("Cpf required.")
+        } if(!validateCpf(cpf)){
+            errorCode = 422
+            throw new Error("Type your CPF in the following format, using special characters: 111.111.111-11.")
+        } if(!isCpfValid(cpf)){
+            errorCode = 422
+            throw new Error("Invalid CPF number.")
         } if(!email){
             errorCode = 422
             throw new Error("E-mail required.")
+        } if(!validateEmail(email)){
+            errorCode = 422
+            throw new Error("Invalid e-mail.")
         } if(!birthDate){
             errorCode = 422
             throw new Error("Date of birth required.")
+        } if(!validateBirthDate(birthDate)){
+            errorCode = 422
+            throw new Error("Type your birth date in the following format, using special characters: YYYY-MM-DD.")
         }
 
         const allCustomers = await customersDB.getCustomers()

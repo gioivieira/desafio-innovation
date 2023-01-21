@@ -25,6 +25,9 @@ const createOrder = async (req: Request, res: Response)=>{
         } if(!quantity){
             errorCode = 422
             throw new Error("Quantity required.")
+        } if(typeof(quantity) !== "number"){
+            errorCode = 422
+            throw new Error("The quantity has to be a number.")
         } if(Number(quantity) <= 0){
             errorCode = 422
             throw new Error("The quantity must be greater than 0.")
