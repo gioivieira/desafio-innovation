@@ -4,7 +4,7 @@ GET http://localhost:3306/products
 Content-Type: application/json
 
 ###
-GET http://localhost:3306/products/1674481988053
+GET http://localhost:3306/products/1674491518624
 Content-Type: application/json
 
 ###
@@ -12,25 +12,25 @@ POST http://localhost:3306/products
 Content-Type: application/json
 
 {
-    "name": "Bola Futsal",
-    "category": "Esportivo",
-    "price": 59.99,
-    "quantity": 70
+    "name": "Volleyball Uniform",
+    "category": "Sporty",
+    "quantity": 30,
+    "price": 99.99
 }
 
 ###
-PATCH http://localhost:3306/products/1674481988053
+PATCH http://localhost:3306/products/1674491518624
 Content-Type: application/json
 
 {
-    "name": "Bola Handebol",
-    "category": "Esportivo",
-    "quantity": 25,
-    "price": 45.99
+    "name": "Handball Ball",
+    "category": "Sporty",
+    "quantity": 48,
+    "price": 85.99
 }
 
 ###
-PUT http://localhost:3306/products/1674481988053
+PUT http://localhost:3306/products/1674491611616
 Content-Type: application/json
 
 //Customers endpoints
@@ -74,7 +74,7 @@ GET http://localhost:3306/orders
 Content-Type: application/json
 
 ###
-GET http://localhost:3306/orders/1674312696764
+GET http://localhost:3306/orders/1674491909467
 Content-Type: application/json
 
 ###
@@ -82,13 +82,13 @@ POST http://localhost:3306/orders
 Content-Type: application/json
 
 {
-    "productId": "1674480445880",
-    "customerId": "1674480478444",
+    "productId": "1674491518624",
+    "customerId": "1674481805685",
     "quantity": 2
 }
 
 ###
-DELETE http://localhost:3306/orders/1674312696764
+DELETE http://localhost:3306/orders/1674491775208
 Content-Type: application/json
 
 //API IBGE

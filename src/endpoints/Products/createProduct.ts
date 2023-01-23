@@ -26,13 +26,13 @@ const createProduct = async (req: Request, res: Response)=>{
             throw new Error("Product category must be at least 4 characters long.") 
         } if(!quantity){
             errorCode = 422
-            throw new Error("Product quantity required.")
+            throw new Error("Quantity of product required and must be greater than 0.")
         } if(typeof(quantity) !== "number"){
             errorCode = 422
             throw new Error("The quantity has to be a number.")
         } if(!price){
             errorCode = 422
-            throw new Error("Product price required.")
+            throw new Error("Price of product required and must be greater than 0.")
         } if(typeof(price) !== "number"){
             errorCode = 422
             throw new Error("The price has to be a number.")

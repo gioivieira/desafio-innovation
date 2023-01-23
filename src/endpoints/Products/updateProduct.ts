@@ -41,18 +41,12 @@ const updateProduct = async (req: Request, res: Response)=>{
             if(typeof(quantity) !== "number"){
                 errorCode = 422
                 throw new Error("The quantity has to be a number.")
-            } if(Number(quantity) <= 0){
-                errorCode = 422
-                throw new Error("The quantity must be greater than 0.")
             }
             await productsDB.updateProduct("quantity", Number(quantity), productId)
         } if(price){
             if(typeof(price) !== "number"){
                 errorCode = 422
                 throw new Error("The price has to be a number.")
-            } if(Number(price) <= 0){
-                errorCode = 422
-                throw new Error("The price must be greater than 0.")
             }
             await productsDB.updateProduct("price", Number(price), productId)
         }
