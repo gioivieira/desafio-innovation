@@ -13,6 +13,25 @@ const createOrder = async (req: Request, res: Response)=>{
     const {productId, customerId, quantity} = req.body
 
     try{
+        const allProducts = await productsDB.getProducts()
+        const allCustomers = await customersDB.getCustomers()
+
+        const productInactivate = allProducts.filter(product => product.status.toString() === "INACTIVE")
+
+        for(let product of productInactivate){
+            if(product.id.toString() === productId.toString()){
+                throw new Error("This product is inactive.")
+            }
+        }
+
+        const customerInactivate = allCustomers.filter(customer => customer.status.toString() === "INACTIVE")
+
+        for(let customer of customerInactivate){
+            if(customer.id.toString() === customerId.toString()){
+                throw new Error("This customer is inactive.")
+            }
+        }
+
         if(!productId && !customerId && quantity){
             errorCode = 422
             throw new Error("Product id, customer id and quantity are required.")
@@ -33,7 +52,6 @@ const createOrder = async (req: Request, res: Response)=>{
             throw new Error("The quantity must be greater than 0.")
         }
 
-        const allProducts = await productsDB.getProducts()
         const productExisting = allProducts.filter(product => product.id.toString() === productId.toString())
 
         if(productExisting.length < 1){
@@ -41,7 +59,6 @@ const createOrder = async (req: Request, res: Response)=>{
             throw new Error("Product not found.")            
         }
 
-        const allCustomers = await customersDB.getCustomers()
         const customerExisting = allCustomers.filter(customer => customer.id.toString() === customerId.toString())
 
         if(customerExisting.length < 1){

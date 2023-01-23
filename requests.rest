@@ -4,7 +4,7 @@ GET http://localhost:3306/products
 Content-Type: application/json
 
 ###
-GET http://localhost:3306/products/1674311954724
+GET http://localhost:3306/products/1674481988053
 Content-Type: application/json
 
 ###
@@ -12,25 +12,25 @@ POST http://localhost:3306/products
 Content-Type: application/json
 
 {
-    "name": "Bola futesdasdbol",
+    "name": "Bola Futsal",
     "category": "Esportivo",
-    "price": 50.50,
-    "quantity": 50
+    "price": 59.99,
+    "quantity": 70
 }
 
 ###
-PATCH http://localhost:3306/products/1674311954724
+PATCH http://localhost:3306/products/1674481988053
 Content-Type: application/json
 
 {
-    "name": "Roupa",
-    "category": "Vestuário",
-    "quantity": 50,
-    "price": 50
+    "name": "Bola Handebol",
+    "category": "Esportivo",
+    "quantity": 25,
+    "price": 45.99
 }
 
 ###
-PUT http://localhost:3306/products/1674311954724
+PUT http://localhost:3306/products/1674481988053
 Content-Type: application/json
 
 //Customers endpoints
@@ -40,7 +40,7 @@ GET http://localhost:3306/customers
 Content-Type: application/json
 
 ###
-GET http://localhost:3306/customers/1674312215724
+GET http://localhost:3306/customers/1674481805685
 Content-Type: application/json
 
 ###
@@ -48,23 +48,23 @@ POST http://localhost:3306/customers
 Content-Type: application/json
 
 {
-    "fullName": "Giovana Inez Vieira",
-    "cpf": "138.437.136-26",
-    "email": "gioivieira@gmail.com",
-    "birthDate": "1999-04-01"
+    "fullName": "Maria Rodrigues",
+    "cpf": "821.475.406-25",
+    "email": "maria@gmail.com",
+    "birthDate": "1975-10-10"
 }
 
 ###
-PATCH http://localhost:3306/customers/1674312215724
+PATCH http://localhost:3306/customers/1674481805685
 Content-Type: application/json
 
 {
-    "fullName": "Giova",
-    "email": "gioivieira@gmail.com"
+    "fullName": "Giovana Vieira",
+    "email": "gioivieira@outlook.com"
 }
 
 ###
-PUT http://localhost:3306/customers/1674312215724
+PUT http://localhost:3306/customers/1674481805685
 Content-Type: application/json
 
 //Orders endpoints
@@ -82,9 +82,9 @@ POST http://localhost:3306/orders
 Content-Type: application/json
 
 {
-    "productId": "1674312080796",
-    "customerId": "1674312215724",
-    "quantity": 20
+    "productId": "1674480445880",
+    "customerId": "1674480478444",
+    "quantity": 2
 }
 
 ###
